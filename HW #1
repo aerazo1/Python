@@ -1,0 +1,248 @@
+# 1.1 Given a string S, write a program to convert the given string into an integer and print the integer.
+
+S = int(input())
+print(S)
+
+# 1.2 Given two strings S1 & S2, search for an occurrence of the second string within a first string.
+
+# Define your string
+S1 = str(input(""))
+S2 = str(input(""))
+# Print the start index of the second string within the first string
+print(S1.find(S2))
+
+# 1.3 Given a string S, sort the words in S.
+
+# Define your string
+S = str(input(""))
+# Split words within the string and sort it
+words_splits = sorted(S.split())
+sorted_output = " ".join(words_splits)
+print(sorted_output)
+
+# 1.4 Given a string S, convert all characters of S to uppercase without using system library functions.
+
+# Define your string
+S = str(input(""))
+# Convert the string to upper case
+print(S.upper())
+
+# 1.5 Given a string S, count the repeated character(s). Write a function: that accepts string S.
+# The function should return the count of repeated characters('A' to 'Z' and 'a' to 'z').
+
+def solution(S):  # defines function solution(S)
+    count = 0  # define count variables
+    for i in "asdfghjklqwertyuiopzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM":  # for every letter in the alphabet case sensitive
+        if (S.count(i) > 1):  # if the letter is repeated, count increments
+            count += 1
+    return count  # makes count the output for solution(S)
+
+
+S = input()  # defines variable S as an input string
+print(solution(S), end='')  # prints out solution(S) and adds white space at the end instead of going to next line
+
+# 1.6 Given a string S, Write a program to split the string into words.
+
+S = input("")
+words = S.split()
+
+# 1.7 Given two integer numbers N1 and N2, find the average of those and store result in double type number R.
+# The code is already provided to read N1 and N2 integer numbers and to print result value R.
+
+N1 = int(input())
+N2 = int(input())
+R = (N1 + N2) / 2
+print(format(R, ".2F"))
+
+# 1.8 Given two integers N1 and N2, find their sum and store in R.
+# The code to read N1 and N2 as well as to print R has already been provided.
+
+def sum_function(N1, N2):
+    R = int(N1) + int(N2)
+    return R
+
+sum_function(3, 5)
+
+# 1.9 Given two integers N1 and N2, find the odd numbers between N1 to N2 using recursion.
+# Write a function that accepts integers N1 and N2.The function should display odd numbers from N1 to N2 using recursion.
+
+Num1 = int(input(''))
+Num2 = int(input(''))
+
+def print_odd_number(N1, N2):
+    for number in range(N1+1, N2):
+        if number % 2 != 0:
+            print(number)
+        else:
+            continue
+
+print_odd_number(Num1, Num2)
+
+# 1.10 Given two integers N1 and N2, find the odd numbers between N1 to N2 using recursion.
+# Write a function that accepts integers N1 and N2.The function should display even numbers from N1 to N2 using recursion.
+
+N1 = int(input())
+N2 = int(input())
+#if even, start at initial number. Add 1 to end number to ensure it included.
+#Print every other number
+if N1%2==0:
+    print(*range(N1,N2+1,2))
+#if odd, add 1 to initial number. Add 1 to end number to ensure it included.
+#Print every other number
+if N1%2!=0:
+    print(*range(N1+1,N2+1,2))
+
+# 1.11 Given three integers N1, N2 & N3, find the largest number. ***NOT ON TEST***
+# Write a program to display the output according to the following condition:
+#   1 if all three numbers are equal.
+#   0 if two numbers are equal and larger than a third number.
+
+N1 = int(input())
+N2 = int(input())
+N3 = int(input())
+
+equal = 1
+not_equal = 0
+List = [N1, N2, N3]
+
+if N1 == N2 == N3:
+    print(equal)
+elif N1 == N2 and N2 > N3:
+    print(not_equal)
+elif N2 == N3 and N3 > N1:
+    print(not_equal)
+elif N3 == N1 and N1 > N2:
+    print(not_equal)
+else:
+    print(max(List))
+
+
+# 1.12 Given two integers N1 and N2, find their sum and store in R.
+# The code to read N1 and N2 as well as to print R has already been provided.
+
+N1 = int(input())
+N2 = int(input())
+list1 = [N1,N2]
+#sum elements in list1 and store as variable R
+R = sum(list1)
+#print R
+print(R)
+
+# 1.13 Given two integers N1 and N2, find their product and store in R.
+# The code to read N1 and N2 as well as to print R has already been provided.
+
+N1 = int(input())
+N2 = int(input())
+# write your code here
+R = N1 * N2
+
+print(R)
+
+# 1.14 Given a list of integers, remove even numbers from list.
+# Write a function, def solution(L): that accepts a list L of integers,
+# the function should return a list after removing even numbers in the list.
+
+L = [int(x) for x in input().split()]
+# loop to traverse each element in the list remove even elements
+for i in L.copy():
+    divid = i % 2
+    if divid == 0:
+        L.remove(i)
+# print list after removing EVEN elements
+print(L)
+
+# 1.15 Given two integers N1 and N2, interchange values of the variable and print it.
+
+N1 = int(inpu   t())
+N2 = int(input())
+N1, N2 = N2, N1
+print(N1,N2)
+
+# 1.16 Given two integers N1 and N2, find the LCM of N1 and N2.
+
+def calculate_lcm(N1,N2):
+    if N1 > N2:
+       greater = N1
+    else:
+       greater = N2
+
+    while(True):
+        if((greater % N1 == 0) and (greater % N2 == 0)):
+            lcm = greater
+            break
+        greater += 1
+
+    return lcm
+N1 = int(input())
+N2 = int(input())
+lcm = calculate_lcm(N1, N2)
+print(lcm)
+
+# 1.17 Given an array of numbers where every number is represented as a string. ***NOT ON TEST***
+# The numbers may be very large(may not fit in long long int), Write a program to sort these numbers.
+
+Num_elem = int(input())
+Nums = input()
+Num_list = Nums.split(' ')
+sorted_num = sorted(Num_list, key=len)
+sorted_str = ' '.join(map(str, sorted_num))
+print(sorted_str)
+
+
+# 1.18 Given two integers N1 and N2, display all the prime numbers between N1 and N2.
+
+N1 = int(input())
+N2 = int(input())
+
+for num in range(N1, N2 + 1):
+    if num > 1:
+        for i in range(2, num):
+            if (num % i) == 0:
+                break
+        else:
+            print(num, end=" ")
+
+# 1.19 Given two integers N1 and N2 and a function “Square” that calculates the square of a number,
+# find the sum of the squares of two numbers. Use the given Square function to calculate square of a number.
+
+def Square(N):
+    return N * N
+def solution(N1,N2):
+    return(N1**2 + N2**2)
+N1 = int(input())
+N2 = int(input())
+print(solution(N1,N2),end='')
+
+# 1.20 Given two integers, find the Greatest Common Divisor(GCD) of the integers.
+# Write a function: int solution(int N1, int N2) that accepts two integers N1 and N2.The function should return their greatest common divisor.
+
+def solution(N1, N2):
+    if(N2==0):
+        return N1
+    else:
+        return solution(N2,N1%N2)
+print(solution(int(input()), int(input())), end='')
+
+
+# 1.21 Given a number N, display the sum of the first N numbers.
+
+N1=int(input())
+sum = 0
+# loop from 1 to N1
+for num in range(1, N1 + 1, 1):
+    sum = sum + num
+print(sum)
+
+
+# 1.22 Read N integers and find the sum of all positive numbers. ***NOT ON TEST**
+# Write a function def solution(N): that accepts an integer N.The function should read N integers and return the sum of all positive numbers.
+
+def solution(N):
+ res = 0
+ for _ in range(N):
+  num = int(input())
+  if num>0: res += num
+ return res
+
+
+N = int(input())
