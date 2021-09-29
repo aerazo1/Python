@@ -1,0 +1,100 @@
+# 1 Write a python code to check the version of python that you are using
+
+import sys
+print(sys.version)
+
+# 2 Write a python to check you current working dictionary
+
+import os
+print(os.getcwd())
+
+
+# 3 Write a python program that prompts the user to input their name, age, and occupation.
+# Then, you print them in reverse order (occupation, age, name) with a space between them
+User_name = input("Please enter your name: ")
+User_age = input("Please enter your age: ")
+User_occupation = input("Please enter your occupation: ")
+
+User_list = [User_name, User_age, User_occupation]
+User_list.reverse()
+print(User_list, sep=' ')
+
+# 4 Write a python program to count the numbers 4 and 7 in the following list: my_numbers_list = [5,8,9,15,4,30,15,12,7,7]
+
+my_numbers_list = [5,8,9,15,4,30,15,12,7,7]
+count = 0
+for num in my_numbers_list:
+    if num == 4 or num == 7:
+        count = count + 1
+    else:
+        continue
+print(count)
+
+#Pass tells python to continue within the loop while continue says to start over again
+# 5 Write a program that accepts the width and length of a rectangle and compute the area
+
+rec_width = float(input("Please enter the width of the rectangle: "))
+rec_length = float(input("Please enter the length of the rectangle: "))
+
+rec_area = rec_length * rec_width
+
+print("The area of the rectangle is: ", rec_area)
+
+# 6 Given the data as below; Create a new list that stores only names of people who are above 10 years old
+
+import pandas as pd
+
+My_classmates_info = [('Kian', 4), ('Yasamin', 7), ('Sophie', 15), ('Princep', 13)]
+
+df_classmates_info = pd.DataFrame(My_classmates_info, columns = ['Name', 'Age'])
+
+over_10 =  above_100 = df_classmates_info.iloc[list(df_classmates_info.Age > 10), :]
+
+print(over_10)
+
+# 7 Pick Four stocks that you are interested in, look up for the company information, and manually create a data frame as follows:
+
+Stock_data = {'Ticker': ['NVDA','DOCU','SQ', 'TSLA'], 'Close Price': [219, 277.74, 255.79, 756.99], 'Open Price': [223, 277, 256.06, 757.15],
+              'Simple Moving Average': [206.96, 292.35, 160.01, 700.02], 'CEO Name': ['Jen-Hsun Huang', 'Daniel Springer', 'Jack Dorsey', 'Elon Musk'],
+              'Latest Analyst Rating': ['Buy', 'Buy', 'Buy', 'Buy']}
+
+df1 = pd.DataFrame(Stock_data)
+print(df1.head())
+
+# 7A Create a new column 'Diff' that calculates the difference between close and open price
+
+df1['Diff'] = df1['Close Price'] - df1['Open Price']
+print(df1.head())
+
+# 7B Delete the observations in which the difference between open and close price is negative
+df1.drop(df1[df1.Diff < 0].index, inplace = True)
+print(df1.head())
+
+mask = (df1['Diff'] < 0)
+df1 = df1.loc[~mask]
+print(df1.head())
+
+# 7C Create a new column names "Lag CEO" in which the CEO for that company is the CEO of its lag company
+
+df1['CEO Name'] = df1['CEO Name'].replace(['Jen-Hsun Huang','Daniel Springer', 'Jack Dorsey', 'Elon Musk'],
+                                          ['Daniel Springer', 'Jack Dorsey', 'Elon Musk', ' '])
+
+print(df1.head())
+
+# 7D Export your data to excel and name that excel file as "hw2_dataframe"
+df1.to_excel(r'C:\Users\adria\Downloads\hw2_dataframe.xlsx')
+
+
+# Write a Python Program which iterates the integers from 1 to 100.
+# For multiples of 7 print "Happy" instead of the number and for the multiples of 13 print "Yolo".
+# For numbers which are multiples of both 7 and 13 print "Happy Yolo"
+
+for i in range(1,101):
+    if i % 7 == 0 and i % 13 == 0:
+        print(i,"Happy Yolo")
+    elif i % 7 == 0:
+        print(i, "Happy")
+    elif i % 13 == 0:
+        print(i, "Yolo")
+    else:
+        continue
