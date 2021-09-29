@@ -1,0 +1,103 @@
+
+1.	Create a list (my_essential_items) of 5 items you will always bring with you in your backpack
+a.	Add “teddy bear” to your existing list
+b.	Remove the 3rd item from your list
+c.	Sort the list in alphabet order
+d.	Reverse the order of the list
+e.	Get the name of the 2nd item within the list
+f.	Get the index of your most essential item in the list. What is its position within the list?
+
+
+'''
+
+my_essential_items = ['phone', 'laptop', 'notebooks', 'pens', "water bottle"]
+print(my_essential_items)
+
+# a
+
+my_essential_items.append('teddy bear')
+print(my_essential_items)
+
+# b
+
+my_essential_items.remove('notebooks')
+print(my_essential_items)
+
+# c
+
+my_essential_items_sorted = sorted(my_essential_items)
+print(my_essential_items_sorted)
+
+# d
+
+my_essential_items_reversed = []
+
+for item in reversed(my_essential_items):
+    my_essential_items_reversed.append(item)
+
+print(my_essential_items_reversed)
+
+# e
+
+most_essential_item_index = my_essential_items.index('laptop')
+print(most_essential_item_index)
+
+'''
+
+2.	You have a friend who is working at the bank. He is looking for a way to group all of the customer’s transactions (name and amount) within every minute together. 
+The data should be in a separate group if it is from a different minute. His data looks as follow:
+
+8:00:01                                8:00:07                           8:00:10                       8:03:16                    8:03:25
+Lilly: $2.99                         Tim: $3.15                           Kate: $1.12                  Nancy: 2.13               Peter: 1.12
+
+He is interested in knowing the ordered of the transactions within each minute but does not want anyone to tamper within-minute data once it is created. 
+Create a new variable named transaction_book to organize his data, based on his requirement. 
+
+Does your code still accommodate his need if he wants to add the following within-minute data to the existing data you created for him?
+
+8:02:45                                      8:02:57
+Painter: $1.13                            Leon: $7.98
+
+'''
+
+transaction_book = [[('Lilly', 2.99), ('Tim', 3.05), ('Kate', 1.12)], [('Nancy', 2.13), ('Peter', 1.12)]]
+
+transaction_book = [({'Lilly', 2.99}, {'Tim', 3.05}, {'Kate', 1.12}), ({'Nancy', 2.13}, {'Peter', 1.12})]
+
+transaction_book.append(({'Painter', 1.13}, {'Leon', 7.98}))
+
+for minute in transaction_book:
+    print(minute)
+    for transaction in minute:
+        print(transaction)
+
+
+
+'''
+
+3. Question from the word document
+
+'''
+
+stock_dictionary = {'Ticker': ['FLWS', 'TXG', 'YI'], 'Company': ['1-800-FLOWERS.COM, Inc.', '10x Genomics, Inc.', '111, Inc.'], \
+                    'Sector': ['Consumer Cyclical', 'Healthcare', 'Healthycare'], 'Industry': ['Specialty Retail', 'Health Information Services' \
+                    'Health Information Services'], 'Country': ['USA', 'USA', 'China'], 'Market Cap': ['2.06M', '20.23M', '625.81B'], \
+                    'P/E': 18.09, 'Price':[32.17, 184.07, 7.26], 'Change':[-0.31, -3.59, -5.71], 'Volume': [397953, 421488, 440364]}
+
+# a
+
+
+stock_dictionary['Ticker'] = stock_dictionary.get('Ticker', ()) + ['GOED']
+stock_dictionary['Company'] = stock_dictionary.get('Company', ()) + ['1847 Goedeker Inc.']
+stock_dictionary['Sector'] = stock_dictionary.get('Sector', ()) + ['Consumer Cyclical']
+stock_dictionary['Industry'] = stock_dictionary.get('Industry', ()) + ['Internet Retail']
+stock_dictionary['Country'] = stock_dictionary.get('Country', ()) + ['USA']
+stock_dictionary['Market Cap'] = stock_dictionary.get('Market Cap', ()) + ['321.36M']
+stock_dictionary['Price'] = stock_dictionary.get('Price', ()) + [3.06]
+stock_dictionary['Change'] = stock_dictionary.get('Change', ()) + [-2.24]
+stock_dictionary['Volume'] = stock_dictionary.get('Volume', ()) + [3716112]
+
+# b
+
+stock_dictionary['close_price'] = [45.34, 87.43, 34.05, 17.95]
+print(stock_dictionary)
