@@ -1,0 +1,84 @@
+# 1. Download the del.csv file, and store the data in a DataFrame
+import pandas as pd
+from datetime import datetime
+
+df1 = pd.read_csv(r'C:\Users\adria\Downloads\del.csv')
+# df1.head()
+
+# 1a. Calculate the difference between trade_date and maturity_date and store that data in a new column called 'time_to_maturity'
+pd.to_datetime(df1['trade_date', 'maturity_date'])
+df1['trade_date'].dt.date
+
+#df1['time_to_maturity'] = df1['trade_date'] - df1['maturity_date']
+#print(df1['time_to_maturity'])
+
+# 1b. Delete the 'special _condition' column
+df2 = df1.drop(columns=['special_condition'])
+# print(df2.head())
+# 1c. Replace "-" with 99999 for the entire DataFrame
+df3 = df2.replace(to_replace='-',
+                  value=99999)
+# 1d. Create a new column called "bond_id" to assign unique numbers to bonds, using cusip_link
+df.sort_values(['cusip_link'], inplace=True)
+
+df['bond_id']=df.groupby(['cusip_link']).ngroup()
+df['bond_id']=df.groupby(['cusip_link']).ngroup().add(1)
+
+# 1e. Check whether the data type in column "price" is a number
+datatypes = df1.dtypes['price']
+print(datatypes)
+# 1f. Create a new dataframe that sums up trade_amount by trade_date and trade_type.
+new_df = df1[['trade_date', 'trade_type', 'trade_amount']]
+print(new_df.head())
+
+
+# 2. Write a function that takes any two sentences as inputs. The function will do three things
+# 2a. Calculate and print out the sum of unique words in both sentences
+# 2b. Check the number of words in each sentences, Print out 'Yolo' if the number of words in both sentences are not the same, Print out 'Happy' if the number of words in both sentences are the same
+# 2c. Remove these symbols '@, #, &, -, %, from the sentences, Print out those two sentences without those symbols
+
+def UniqueWords(a, b):
+    list_a = a.split()
+    list_b = b.split()
+    remove_sym = list['@', '#', '&', '-', '%']
+    uw = ''
+    count = 0
+    num_of_words_a = len(list_a)
+    num_of_words_b = len(list_b)
+    if num_of_words_a == num_of_words_b:
+        print('Happy')
+    else:
+        print('Yolo')
+    for i in list_a:
+        if i not in list_b:
+            uw = uw + " " + i
+            count += 1
+    for j in list_b:
+        if j not in list_a:
+            uw = uw + " " + j
+            count += 1
+    for k in remove_sym:
+        if k in list_a:
+            list_a.remove(k)
+        if k in list_b:
+            list_b.remove(k)
+    return uw, count
+
+a = input("Please enter first sentence: ")
+b = input("Please enter second sentence: ")
+print(UniqueWords(a, b))
+
+# 3. Given the following lists of numbers:
+# Write a nested loop to find the multiplication of each number in 'my_number_list1' to each number in 'my_number_list2'
+# and print out 'Happy' for the multiplication that is below 1000, and 'Unhappy' for the multiplication that is above 1000
+
+my_number_list1 = [2, 4, 7, 10, 30, 77, 15, 33, 44]
+my_number_list2 = [9, 10, 7, 10, 20, 52, 15, 33, 44]
+
+for x in my_number_list1:
+    for y in my_number_list2:
+        z = x ** y
+        if z < 1000:
+            print('Happy')
+        else:
+            print('Unhappy')
