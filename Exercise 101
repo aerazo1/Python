@@ -1,0 +1,68 @@
+# Question 1
+num_1 = 4
+num_2 = 5.67893
+num_3 = 2.87541
+
+print((num_1 * num_2) / num_3)
+print(num_1 + num_2 - num_3)
+num_2_round = round(num_2, 2)
+print(num_2_round)
+num_3_squared = num_3**2
+print(num_3_squared)
+
+# Question 2
+
+# Create a new variable called my_favorite_food
+my_favorite_food = "pho hamburger pizza chicken_wing cheese_sandwich sushi"
+
+# Print out the name of 6 dishes
+print(my_favorite_food)
+
+# Print out the name of the third dish
+print(my_favorite_food[14:20])
+
+# Split the name of each dish and create 6 different variables
+food_1 = my_favorite_food.split(' ')[0]
+print(food_1)
+
+food_2 = my_favorite_food.split(' ')[1]
+print(food_2)
+
+food_3 = my_favorite_food.split(' ')[2]
+print(food_3)
+
+food_4 = my_favorite_food.split(' ')[3]
+print(food_4)
+
+food_5 = my_favorite_food.split(' ')[4]
+print(food_5)
+
+food_6 = my_favorite_food.split(' ')[5]
+print(food_6)
+
+# Count the number of dishes with more than two words
+number_of_two_word_dishes = len(my_favorite_food.split('_')) - 1
+print(number_of_two_word_dishes)
+
+number_of_two_word_dishes_alt = my_favorite_food.count('_')
+print(number_of_two_word_dishes_alt)
+
+# Modify your original my_favorite_food variable by replacing a one-word dish with
+# another two-word dish to see whether your code in (d) still correctly counts the
+# number of dishes with more than two words
+
+# Create a new variable called my_favorite_food
+my_favorite_food = "pho cheese_fries pizza chicken_wing cheese_sandwich sushi"
+number_of_two_word_dishes = len(my_favorite_food.split('_')) - 1
+print(number_of_two_word_dishes)
+
+# Question 3
+# Notes: without int, python will treat your input as text
+number_1 = int(input("Enter first number: "))
+number_2 = int(input("Enter second number: "))
+
+sum_of_number_1_and_2 = number_1 + number_2
+
+print(sum_of_number_1_and_2)
+print(sum_of_number_1_and_2 > number_1)
+print(sum_of_number_1_and_2 > number_2)
