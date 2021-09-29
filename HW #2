@@ -1,100 +1,125 @@
-# 1 Write a python code to check the version of python that you are using
+'''  # 1 Write a python code to check the version of python that you are using '''
 
-import sys
-print(sys.version)
+import platform
+print(platform.python_version())
 
-# 2 Write a python to check you current working dictionary
+
+'''  # 2 Write a python code to check your current working directory '''
 
 import os
 print(os.getcwd())
 
+'''  # 3 Write a python program that prompt the users to input their name, age, and occupation.
+ Then, you print them in a reverse order (occupation, age, name) with a space between them. '''
 
-# 3 Write a python program that prompts the user to input their name, age, and occupation.
-# Then, you print them in reverse order (occupation, age, name) with a space between them
-User_name = input("Please enter your name: ")
-User_age = input("Please enter your age: ")
-User_occupation = input("Please enter your occupation: ")
+# Solution 1
+name=str(input('enter your name'))
+age=str(input('enter your age'))
+occupation=str(input('enter your occupation'))
 
-User_list = [User_name, User_age, User_occupation]
-User_list.reverse()
-print(User_list, sep=' ')
+list=[occupation,age,name]
+print(*list,sep=' ')
 
-# 4 Write a python program to count the numbers 4 and 7 in the following list: my_numbers_list = [5,8,9,15,4,30,15,12,7,7]
 
-my_numbers_list = [5,8,9,15,4,30,15,12,7,7]
-count = 0
-for num in my_numbers_list:
-    if num == 4 or num == 7:
-        count = count + 1
+'''  4 Write a python program to count the numbers 4 and 7 in the following list: 
+my_numbers_list = [5, 8, 9, 15, 4, 30, 15, 12, 7, 7] '''
+
+# Solution 1
+
+my_numbers_list = [5, 8, 9, 15, 4, 30, 15, 12, 7, 7]
+print("4:",my_numbers_list.count(4))
+print("7:", my_numbers_list.count(7))
+
+# Solution 2
+my_numbers_list = [5, 8, 9, 15, 4, 30, 15, 12, 7, 7]
+
+number_of_4_and_7 = 0
+for number in my_numbers_list:
+    if number == 4 or number == 7:
+        number_of_4_and_7 += 1
     else:
-        continue
-print(count)
+        pass
 
-#Pass tells python to continue within the loop while continue says to start over again
-# 5 Write a program that accepts the width and length of a rectangle and compute the area
+print(number_of_4_and_7)
 
-rec_width = float(input("Please enter the width of the rectangle: "))
-rec_length = float(input("Please enter the length of the rectangle: "))
 
-rec_area = rec_length * rec_width
+''' 5 Write a program that accept the width and length of a rectangle and compute the area '''
 
-print("The area of the rectangle is: ", rec_area)
 
-# 6 Given the data as below; Create a new list that stores only names of people who are above 10 years old
+def area_of_any_rectangle(width, length):
+    area = width * length
+    print(area)
 
-import pandas as pd
+area_of_any_rectangle(int(input('Enter the width of your rectangle:')), int(input('Enter the length of your rectangle:')))
+
+
+''' 
+6 Given the data as below:
+My_classmates_info = [(‘Kian’, 4), (‘Yasamin’, 7), (‘Sophie’, 15), (‘Princep’, 13)]
+Create a new list that stores only names of people who are above 10 years old
+'''
 
 My_classmates_info = [('Kian', 4), ('Yasamin', 7), ('Sophie', 15), ('Princep', 13)]
 
-df_classmates_info = pd.DataFrame(My_classmates_info, columns = ['Name', 'Age'])
+# Solution 1
+updated_list=[]
 
-over_10 =  above_100 = df_classmates_info.iloc[list(df_classmates_info.Age > 10), :]
+for (name,age) in My_classmates_info:
+    if (age) > 10:
+        updated_list.append(name)
 
-print(over_10)
+print(updated_list)
 
-# 7 Pick Four stocks that you are interested in, look up for the company information, and manually create a data frame as follows:
+# Solution 2
 
-Stock_data = {'Ticker': ['NVDA','DOCU','SQ', 'TSLA'], 'Close Price': [219, 277.74, 255.79, 756.99], 'Open Price': [223, 277, 256.06, 757.15],
-              'Simple Moving Average': [206.96, 292.35, 160.01, 700.02], 'CEO Name': ['Jen-Hsun Huang', 'Daniel Springer', 'Jack Dorsey', 'Elon Musk'],
-              'Latest Analyst Rating': ['Buy', 'Buy', 'Buy', 'Buy']}
+My_classmates_info = [('Kian', 4), ('Yasamin', 7), ('Sophie', 15), ('Princep', 13)]
 
-df1 = pd.DataFrame(Stock_data)
-print(df1.head())
+updated_list=[]
 
-# 7A Create a new column 'Diff' that calculates the difference between close and open price
+for item in My_classmates_info:
+    if item[1] > 10:
+        updated_list.append(item[0])
 
-df1['Diff'] = df1['Close Price'] - df1['Open Price']
-print(df1.head())
-
-# 7B Delete the observations in which the difference between open and close price is negative
-df1.drop(df1[df1.Diff < 0].index, inplace = True)
-print(df1.head())
-
-mask = (df1['Diff'] < 0)
-df1 = df1.loc[~mask]
-print(df1.head())
-
-# 7C Create a new column names "Lag CEO" in which the CEO for that company is the CEO of its lag company
-
-df1['CEO Name'] = df1['CEO Name'].replace(['Jen-Hsun Huang','Daniel Springer', 'Jack Dorsey', 'Elon Musk'],
-                                          ['Daniel Springer', 'Jack Dorsey', 'Elon Musk', ' '])
-
-print(df1.head())
-
-# 7D Export your data to excel and name that excel file as "hw2_dataframe"
-df1.to_excel(r'C:\Users\adria\Downloads\hw2_dataframe.xlsx')
+print(updated_list)
 
 
-# Write a Python Program which iterates the integers from 1 to 100.
-# For multiples of 7 print "Happy" instead of the number and for the multiples of 13 print "Yolo".
-# For numbers which are multiples of both 7 and 13 print "Happy Yolo"
+''' 
+7. Pick 4 stocks that you are interested in, look up for the company information, and manually create a data frame as follow:
+# 7a. Create a new column named “Diff” that calculates the difference between close and open price
+# 7b. Delete the observations in which the difference between open and close price is negative
+# 7c. Create a new column names “lag_CEO” in which the CEO for that company is the CEO of its lag company. The example of lag_CEO column looks as follow:
+# 7d Export your data to excel and name that excel file as “hw2_dataframe”
+'''
+
+import pandas as pd
+data={'Ticker':['LYG','GSAT','SAN','RUN'],'Close Price':[2.40,1.86,3.67,42.83],'Open Price':[2.39,1.68,3.66,44.19],'Simple Moving Avg':[2.54,1.49,3.22,47.77],'CEO':['Charles Nunn','David Kagan','Jose Alvarez','Mary Powell'],'Latest Analyst Rating':['Upgrade','Initiated','Upgrade','Initiated']}
+df=pd.DataFrame(data)
+
+# 7a. Create a new column named “Diff” that calculates the difference between close and open price
+df['Difference'] = df['Close Price'] - df['Open Price']
+
+# 7b. Delete the observations in which the difference between open and close price is negative
+
+new_df = df.drop(df[df["Difference"] < 0].index, inplace = True)
+new_df = df.drop(df[df["Difference"] < 0].index, inplace = False)
+
+# 7c. Create a new column names “lag_CEO” in which the CEO for that company is the CEO of its lag company.
+df['lag_CEO'] = df['CEO'].shift(periods=-1)
+
+# 7d Export your data to excel and name that excel file as “hw2_dataframe"
+
+df.to_csv('hw2_dataframe.csv')
+
+'''
+8 Write a Python program which iterates the integers from 1 to 100. For multiples of 7 print "Happy" instead of the number and for the multiples of 
+13 print "Yolo". For numbers which are multiples of both 7 and 13 print "Happy Yolo”
+'''
 
 for i in range(1,101):
-    if i % 7 == 0 and i % 13 == 0:
-        print(i,"Happy Yolo")
-    elif i % 7 == 0:
-        print(i, "Happy")
-    elif i % 13 == 0:
-        print(i, "Yolo")
-    else:
-        continue
+    print(i)
+    if i%7 == 0 and i%13 != 0:
+        print(i, '-------------->', "Happy")
+    elif i%13 == 0 and i%7 != 0:
+        print(i, '-------------->', "Yolo")
+    elif i%13 == 0 and i%7 == 0:
+        print(i, '-------------->', "Happy Yolo")
