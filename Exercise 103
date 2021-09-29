@@ -1,0 +1,105 @@
+'''
+
+1.	Convert your dictionary in the second questions from the last exercise into a data frame. 
+a.	Print out the Industry of YI
+b.	Print out the Sector and Industry of FLWS and GOED
+c.	Print out the ticker(s) in which the closing price is smaller than the open price
+d.	Change the index of your data frame to start with 2, instead of 0
+e.	Fill in the value of 99999 for columns with missing values
+f.	Create a new column named “Check” that is True if ‘price’ is below 100 and False if price is above 100
+
+
+
+'''
+# a
+
+stock_dictionary = {'Ticker': ['FLWS', 'TXG', 'YI'], 'Company': ['1-800-FLOWERS.COM, Inc.', '10x Genomics, Inc.', '111, Inc.'], \
+                    'Sector': ['Consumer Cyclical', 'Healthcare', 'Healthycare'], 'Industry': ['Specialty Retail', 'Health Information Services', \
+                    'Health Information Services'], 'Country': ['USA', 'USA', 'China'], 'Market Cap': ['2.06M', '20.23M', '625.81B'], \
+                    'P/E': [18.09, '-', '-'], 'Price':[32.17, 184.07, 7.26], 'Change':[-0.31, -3.59, -5.71], 'Volume': [397953, 421488, 440364]}
+
+stock_dictionary['Ticker'] = stock_dictionary.get('Ticker', ()) + ['GOED']
+stock_dictionary['Company'] = stock_dictionary.get('Company', ()) + ['1847 Goedeker Inc.']
+stock_dictionary['Sector'] = stock_dictionary.get('Sector', ()) + ['Consumer Cyclical']
+stock_dictionary['Industry'] = stock_dictionary.get('Industry', ()) + ['Internet Retail']
+stock_dictionary['Country'] = stock_dictionary.get('Country', ()) + ['USA']
+stock_dictionary['Market Cap'] = stock_dictionary.get('Market Cap', ()) + ['321.36M']
+stock_dictionary['P/E'] = stock_dictionary.get('P/E', ()) + ['-']
+stock_dictionary['Price'] = stock_dictionary.get('Price', ()) + [3.06]
+stock_dictionary['Change'] = stock_dictionary.get('Change', ()) + [-2.24]
+stock_dictionary['Volume'] = stock_dictionary.get('Volume', ()) + [3716112]
+
+stock_dictionary['close_price'] = [45.34, 87.43, 34.05, 17.95]
+print(stock_dictionary)
+
+
+import pandas as pd
+pd.DataFrame.from_dict(stock_dictionary)
+
+stock_df =  pd.DataFrame(data = stock_dictionary)
+
+# a
+
+stock_df.iloc[2]['Industry']
+
+# b
+
+stock_df.iloc[[0,3],[2,3]]
+
+# c
+
+stock_df[stock_df['Price'] < 100]['Ticker']
+
+stock_df.loc[stock_df['Price'] < 100]['Ticker']
+
+# d
+
+stock_df.index += 2
+
+# e
+
+stock_df['P/E'] = stock_df['P/E'].replace('-', 99999)
+
+# f
+
+stock_df.loc[stock_df['Price'] < 100, 'Check'] = True
+stock_df.loc[stock_df['Price'] > 100, 'Check'] = False
+
+
+
+'''
+2.	Write a code that allows users to input any number and returns the number of digits of that number
+
+'''
+
+number_1 = int(input("Enter your number: "))
+
+number = 765
+digit = 0
+
+while number > 0:
+    digit += 1
+    number = number // 10
+
+print(digit)
+
+
+'''
+3.	Write a code to swap the 2nd and 5th values of the following list
+My list = [4, 7 , 12, 67, 15, 45, 72]
+
+'''
+
+My_list = [4, 7 , 12, 67, 15, 45, 72]
+
+swapped_list = []
+for item in enumerate(My_list):
+
+    if item[0] != 2:
+        swapped_list.append(item[1])
+    if item[0] == 2:
+        swapped_list.append(My_list[5])
+    if item[0] == 5:
+        swapped_list.append(My_list[2])
+
+print(swapped_list)
